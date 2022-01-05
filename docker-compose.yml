@@ -1,5 +1,5 @@
 ---
-version: '3.8'
+version: '3.9'
 services:
 
   gateway:
@@ -258,7 +258,7 @@ services:
 
 
   assembler.hadoop.namenode:
-    image: bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8
+    image: bde2020/hadoop-namenode:latest
     container_name: assembler.hadoop.namenode
     hostname: assembler.hadoop.namenode
     restart: always
@@ -271,7 +271,7 @@ services:
       - ./assembler/hadoop/hadoop.env
 
   assembler.hadoop.datanode:
-    image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
+    image: bde2020/hadoop-datanode:latest
     container_name: assembler.hadoop.datanode
     hostname: assembler.hadoop.datanode
     restart: always
@@ -283,7 +283,7 @@ services:
       - ./assembler/hadoop/hadoop.env
   
   assembler.hadoop.resourcemanager:
-    image: bde2020/hadoop-resourcemanager:2.0.0-hadoop3.2.1-java8
+    image: bde2020/hadoop-resourcemanager:latest
     container_name: assembler.hadoop.resourcemanager
     restart: always
     environment:
@@ -292,7 +292,7 @@ services:
       - ./assembler/hadoop/hadoop.env
 
   assembler.hadoop.nodemanager:
-    image: bde2020/hadoop-nodemanager:2.0.0-hadoop3.2.1-java8
+    image: bde2020/hadoop-nodemanager:latest
     container_name: assembler.hadoop.nodemanager
     restart: always
     environment:
@@ -301,7 +301,7 @@ services:
       - ./assembler/hadoop/hadoop.env
   
   assembler.hadoop.historyserver:
-    image: bde2020/hadoop-historyserver:2.0.0-hadoop3.2.1-java8
+    image: bde2020/hadoop-historyserver:latest
     container_name: assembler.hadoop.historyserver
     restart: always
     environment:

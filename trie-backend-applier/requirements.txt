@@ -1,2 +1,2 @@
 kazoo==2.8.0
-apscheduler==3.6.3
+apscheduler==3.8.1
