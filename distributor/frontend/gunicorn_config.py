@@ -4,7 +4,7 @@ from os import environ, getenv
 from distutils.util import strtobool
 
 
-bind = '0.0.0.0:' + environ.get('PORT', '8000')
+bind = '0.0.0.0:' + environ.get('PORT', '8003')
 
 max_requests = 1000
 
