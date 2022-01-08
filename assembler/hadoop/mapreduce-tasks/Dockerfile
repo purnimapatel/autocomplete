@@ -22,10 +22,13 @@ RUN cd /opt/hadoop/applications/ && ./build_task_jar.sh "PhrasesWithWeightMerged
 RUN cd /opt/hadoop/applications/ && ./build_task_jar.sh "PhrasesWithWeightOrdered"
 
 # Download zookeeper (to access the remote cli)
-RUN curl https://mirrors.up.pt/pub/apache/zookeeper/zookeeper-3.6.1/apache-zookeeper-3.6.1-bin.tar.gz -o /tmp/apache-zookeeper-3.6.1-bin.tar.gz
-RUN tar -xf /tmp/apache-zookeeper-3.6.1-bin.tar.gz -C /tmp/
-RUN mv /tmp/apache-zookeeper-3.6.1-bin /zookeeper
-RUN rm /tmp/apache-zookeeper-3.6.1-bin.tar.gz
+#http://mirror.cogentco.com/pub/apache/zookeeper/zookeeper-3.6.3/
+#https://ftp.cc.uoc.gr/mirrors/apache/zookeeper/zookeeper-3.6.3/apache-zookeeper-3.6.3-bin.tar.gz 
+
+RUN curl https://ftp.cc.uoc.gr/mirrors/apache/zookeeper/zookeeper-3.6.3/apache-zookeeper-3.6.3-bin.tar.gz  -o /tmp/apache-zookeeper-3.6.3-bin.tar.gz
+RUN tar -xf /tmp/apache-zookeeper-3.6.3-bin.tar.gz -C /tmp/
+RUN mv /tmp/apache-zookeeper-3.6.3-bin /zookeeper
+RUN rm /tmp/apache-zookeeper-3.6.3-bin.tar.gz
 
 
 CMD ["/opt/hadoop/applications/do_tasks.sh"]
