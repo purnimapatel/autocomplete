@@ -5,11 +5,11 @@ run:
 	docker-compose up --build --scale distributor.backend=8 --scale distributor.frontend=2 --scale assembler.collector=2 && docker-compose down
 
 do_mapreduce_tasks:
-	docker build -t lopespm/mapreduce-tasks ./assembler/hadoop/mapreduce-tasks
-	docker run --network ${DOCKER_NETWORK} --env-file ${ENV_FILE} lopespm/mapreduce-tasks
+	docker build -t anjalipatel/mapreduce-tasks ./assembler/hadoop/mapreduce-tasks
+	docker run --network ${DOCKER_NETWORK} --env-file ${ENV_FILE} anjalipatel/mapreduce-tasks
 
 setup:
-	docker build -t lopespm/hadoop-base ./assembler/hadoop/base	
+	docker build -t anjalipatel/hadoop-base ./assembler/hadoop/base	
 
 	while [[ "$$(echo "stat" | nc localhost 2181 | grep Mode)" != "Mode: standalone" ]] ; do \
 	    echo "Waiting for zookeeper to come online" ; \
@@ -29,11 +29,11 @@ setup:
 	    sleep 2 ; \
 	done
 
-	docker run --network ${DOCKER_NETWORK} --env-file ${ENV_FILE} lopespm/hadoop-base hadoop fs -mkdir -p /phrases/1_sink/
-	docker run --network ${DOCKER_NETWORK} --env-file ${ENV_FILE} lopespm/hadoop-base hadoop fs -mkdir -p /phrases/2_with_weight/
-	docker run --network ${DOCKER_NETWORK} --env-file ${ENV_FILE} lopespm/hadoop-base hadoop fs -mkdir -p /phrases/3_with_weight_merged/
-	docker run --network ${DOCKER_NETWORK} --env-file ${ENV_FILE} lopespm/hadoop-base hadoop fs -mkdir -p /phrases/4_with_weight_ordered/
-	docker run --network ${DOCKER_NETWORK} --env-file ${ENV_FILE} lopespm/hadoop-base hadoop fs -mkdir -p /phrases/5_tries/
+	docker run --network ${DOCKER_NETWORK} --env-file ${ENV_FILE} anjalipatel/hadoop-base hadoop fs -mkdir -p /phrases/1_sink/
+	docker run --network ${DOCKER_NETWORK} --env-file ${ENV_FILE} anjalipatel/hadoop-base hadoop fs -mkdir -p /phrases/2_with_weight/
+	docker run --network ${DOCKER_NETWORK} --env-file ${ENV_FILE} anjalipatel/hadoop-base hadoop fs -mkdir -p /phrases/3_with_weight_merged/
+	docker run --network ${DOCKER_NETWORK} --env-file ${ENV_FILE} anjalipatel/hadoop-base hadoop fs -mkdir -p /phrases/4_with_weight_ordered/
+	docker run --network ${DOCKER_NETWORK} --env-file ${ENV_FILE} anjalipatel/hadoop-base hadoop fs -mkdir -p /phrases/5_tries/
 
 populate_search:
 	echo "Populating search phrases to the collector"

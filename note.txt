@@ -1,0 +1,1 @@
+https://code.visualstudio.com/docs/java/java-project#_working-with-jar-files
